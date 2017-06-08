@@ -1,16 +1,13 @@
 package com.zjyx.right.controller;
 
-
-import java.util.Date;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zjyx.right.model.BaseObject;
-import com.zjyx.right.service.IRightService;
+import com.zjyx.right.model.persistence.AdminUser;
+import com.zjyx.right.service.AdminUserService;
 
 
 @Controller
@@ -18,13 +15,12 @@ import com.zjyx.right.service.IRightService;
 public class MysqlController {
 	
 	@Resource
-	IRightService rightService;
+	AdminUserService adminUserService;
 
 	@ResponseBody
-	@RequestMapping("/save")
-	public <T extends BaseObject> String save(T t){
-		t.setCtime(new Date());
-		return rightService.save(t);
+	@RequestMapping("/select")
+	public AdminUser select(Integer id){
+		return adminUserService.getAdminUser(id);
 	}
 	
 }
