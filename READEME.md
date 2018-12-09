@@ -9,8 +9,13 @@
 ## 版本号：v1.0.0
 
 - 框架搭建
-- 用户登录模块
-	> To start syncing your workspace, just sign in with Google in the menu.
-
+	> jdk8 springmvc3.0 mybatis3.0
+	> mysql5.6 elasticsearch3.1
+- 新增用户登录模块
+	> 使用用户名称，密码即可登录
+	> 注册用户名称，密码即可成功
 - 权限管理模块
-	> Before starting to sync files, you must link an account in the **Synchronize** sub-menu.
+	> 新增用户
+	> 新增权限
+	> 新增菜单
+	> 权限配置
