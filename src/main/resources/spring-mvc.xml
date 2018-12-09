@@ -47,7 +47,7 @@
 	</bean>
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven />
-
+    <mvc:resources mapping="/login/**" location="/login/"/> 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="cache" value="false" />

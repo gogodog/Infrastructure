@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloWorldController {
 
 	@RequestMapping("/helloworld")
-	public ModelAndView helloworld(){
-		ModelAndView mv = new ModelAndView("views/helloworld");
+	public ModelAndView helloworld(String page){
+		ModelAndView mv = new ModelAndView("views/"+page);
 		return mv;
 	}
 	

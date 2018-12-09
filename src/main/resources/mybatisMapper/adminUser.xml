@@ -5,6 +5,8 @@
 	<select id="selectById" resultType="adminUser">
 	      select id,username,user_code,status,source,role_id,headimgurl,create_time,update_time,unionid,openid from admin_user where id=#{id}
 	</select>
-	
+	<select id="loginByNamePass" resultType="adminUser">
+	      select id,username,user_code,status,source,role_id,headimgurl,create_time,update_time,unionid,openid from admin_user where username=#{0} and password=#{1}
+	</select>
 	
 </mapper>

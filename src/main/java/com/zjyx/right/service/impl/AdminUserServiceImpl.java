@@ -21,4 +21,9 @@ public class AdminUserServiceImpl implements AdminUserService{
 	public int updateAdminUser(AdminUser adminUser){
 		return adminUserMapper.update(adminUser);
 	}
+
+	@Override
+	public AdminUser getAdminUser(String name, String pass) {
+		return adminUserMapper.loginByNamePass(name, pass);
+	}
 }

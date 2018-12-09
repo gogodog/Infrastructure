@@ -25,4 +25,6 @@ public interface AdminUserMapper {
 	public AdminUser getByUserCode(String userCode);
 	
 	public AdminUser getByUnionId(String unionId);
+
+	public AdminUser loginByNamePass(String username, String password);
 }
