@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/login/css/jquery.dialog.css" />
 <link rel="stylesheet" href="/login/css/index.css" />
 
-<title>移动办公自动化系统</title>
+<title>基础结构平台</title>
 </head>
 
 <body>
@@ -38,9 +38,9 @@
                     <li class="nav-info">
                     	<div class="nav-header"><a href="javascript:;" class="ue-clear"><span>导航信息管理</span><i class="icon"></i></a></div>
                         <ul class="subnav">
-                        	<li><a href="javascript:;" date-src="info-reg.html">信息录入</a></li>
-                            <li><a href="javascript:;" date-src="info-mgt.html">信息管理</a></li>
-                            <li><a href="javascript:;" date-src="info-det.html">领导值岗管理</a></li>
+                        	<li><a href="javascript:;" date-src="/helloworld?page=info-reg">信息录入</a></li>
+                            <li><a href="javascript:;" date-src="/helloworld?page=info-mgt">信息管理</a></li>
+                            <li><a href="javascript:;" date-src="/helloworld?page=info-det">领导值岗管理</a></li>
                             <li><a href="javascript:;">中层领导管理</a></li>
                             <li><a href="javascript:;">领导值班记录</a></li>
                         </ul>

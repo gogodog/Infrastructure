@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/info-mgt.css" />
-<link rel="stylesheet" href="css/WdatePicker.css" />
-<title>移动办公自动化系统</title>
+<link rel="stylesheet" href="/login/css/base.css" />
+<link rel="stylesheet" href="/login/css/info-mgt.css" />
+<link rel="stylesheet" href="/login/css/WdatePicker.css" />
+<title>基础结构平台</title>
 </head>
 
 <body>
@@ -49,6 +49,11 @@
             	<input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="开始时间" />
                 <i class="icon"></i>
             </div>
+        </div>
+        <div class="conditions staff ue-clear">
+            <label>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员：</label>
+            <input type="text" placeholder="可以直接输入或选择" />
+            <a href="javascript:;" class="staff-select">选择</a>
         </div>
         <div class="conditions staff ue-clear">
             <label>人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员：</label>
@@ -158,10 +163,10 @@
 </div>
 <div class="pagination ue-clear"></div>
 </body>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/WdatePicker.js"></script>
-<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script type="text/javascript"src="/login/js/jquery.js"></script>
+<script type="text/javascript"src="/login/js/common.js"></script>
+<script type="text/javascript"src="/login/js/WdatePicker.js"></script>
+<script type="text/javascript"src="/login/js/jquery.pagination.js"></script>
 <script type="text/javascript">
 $(".select-title").on("click",function(){
 	$(".select-list").hide();

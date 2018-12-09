@@ -73,11 +73,10 @@ function login(){
 		 data: {name:$("#name").val(), pass:$("#pass").val()},
 		 dataType: "json",
 		 success: function(data){
-		             if(data.error){
+		             if(data.error)
 		             	tips(data.errorMessage);
-		             }else{
-		             	window.location.href = "helloworld?page=index"
-		             }
+		             else
+		             	window.location.href = "/helloworld?page=index";
 		          }
 	 });
 

@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/info-reg.css" />
-<title>移动办公自动化系统</title>
+<link rel="stylesheet" href="/login/css/base.css" />
+<link rel="stylesheet" href="/login/css/info-reg.css" />
+<title>基础结构平台</title>
 </head>
 
 <body>
@@ -43,9 +43,9 @@
     <a href="javascript:;" class="clear">清空内容</a>
 </div>
 </body>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/WdatePicker.js"></script>
+<script type="text/javascript" src="/login/js/jquery.js"></script>
+<script type="text/javascript" src="/login/js/common.js"></script>
+<script type="text/javascript" src="/login/js/WdatePicker.js"></script>
 <script type="text/javascript">
 $(".select-title").on("click",function(){
 	$(".select-list").toggle();
