@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
-import com.zjyx.right.model.Admin_Source;
+import com.zjyx.right.model.enums.Admin_Source;
 
 public class AdminSourceTypeHandler extends BaseTypeHandler<Admin_Source> {
 

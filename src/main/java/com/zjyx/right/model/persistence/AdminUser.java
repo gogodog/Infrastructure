@@ -8,9 +8,9 @@ import com.zjyx.right.model.enums.UpDown_Status;
 public class AdminUser {
 
 	private Integer id;//id
-	private String username;//用户名（目前是微信号�?
+	private String username;//用户名（目前是微
 	private String user_code;//用户code
-	private UpDown_Status status;//状�??
+	private UpDown_Status status;
     private Admin_Source source;//来源
     private Integer role_id;//角色id
 	private Date create_time;//创建时间
