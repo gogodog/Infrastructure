@@ -19,6 +19,8 @@ public class AdminUser {
 	
 	private String unionid;//unionid
 	private String openid;//openid
+	private String password;
+	private String salt;
 	
 	public String getUsername() {
 		return username;
@@ -85,6 +87,18 @@ public class AdminUser {
 	}
 	public void setOpenid(String openid) {
 		this.openid = openid;
+	}
+	public String getPassword() {
+		return this.password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
     
 }
