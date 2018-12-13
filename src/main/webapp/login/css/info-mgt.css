@@ -70,8 +70,8 @@ table tr .time{ width:218px; padding-left:13px;}
 table tr .operate{ width:219px; padding-left:15px;}
 table tr .operate a{ color:#2c7bbc;}
 table tr .operate a:hover{ text-decoration:underline;}
-
-
+table tr:nth-child(even){background-color: rgb(239, 246, 250);}
+/*table tr:hover{background-color:hotpink}*/
 /*分页*/
 .pagination{ margin-top:10px;padding:0 10px;}
 .pagination .pxofy{float:left;color:#6c6c6c;}

@@ -15,6 +15,9 @@ public class PageInfoDto<T> {
 	 private List<T> objects;
 
 	public int getCurrentPage() {
+		if(this.currentPage <= 0){
+			return 1;
+		}
 		return currentPage;
 	}
 
@@ -61,7 +64,7 @@ public class PageInfoDto<T> {
 	
 	//数据库第一条数据
 	public int getBeginNum(){
-		return (currentPage - 1) * onePageSize;
+		return (getCurrentPage() - 1) * onePageSize;
 	}
 	
 	

@@ -21,27 +21,28 @@ public class RoleServiceImpl implements RoleService{
 	SysRoleMapper rolemapper;
 
 	@Override
-	public PageInfoDto<SysRole> getList(SysRoleBean condition) {
+	public PageInfoDto<SysRole> getList(SysRoleBean condition) throws Exception{
 		int count = rolemapper.getListCount(condition);
 		condition.setTotalResults(count);
 		List<SysRole> list = rolemapper.getListPage(condition);
 		return PageInfoDto.getPageInfo(condition.getCurrentPage(), condition.getOnePageSize(), count, list);
+		
 	}
 
 	@Override
-	public BaseView save(SysRole bean) {
+	public BaseView save(SysRole bean) throws Exception {
 		if(StringUtils.isEmptyOrWhitespaceOnly(bean.getRoleName())){
-			return BaseViewHelper.getBaseView(false, "201", "角色名称不能为空");
+			return BaseViewHelper.getFailBaseView("201", "角色名称不能为空");
 		}
 		int count = rolemapper.insert(bean);
 		if(count == 1){
 			return BaseViewHelper.getSuccessBaseView();
 		}
-		return BaseViewHelper.getBaseView(false, "202", "添加失败："+count);
+		return BaseViewHelper.getFailBaseView("202", "添加失败："+count);
 	}
 
 	@Override
-	public SysRole findByRoleId(String roleId) {
+	public SysRole findByRoleId(String roleId) throws Exception {
 		SysRoleBean condition = new SysRoleBean();
 		condition.setOnePageSize(2);
 		condition.setRoleId(roleId);
@@ -51,5 +52,23 @@ public class RoleServiceImpl implements RoleService{
 			return null;
 		}
 		return list.get(0);
+	}
+
+	@Override
+	public BaseView del(SysRole bean) throws Exception {
+		int count = rolemapper.delete(bean);
+		if(count == 1){
+			return BaseViewHelper.getSuccessBaseView();
+		}
+		return BaseViewHelper.getFailBaseView("202", "删除失败："+count);
+	}
+
+	@Override
+	public BaseView update(SysRole bean) throws Exception {
+		int count = rolemapper.update(bean);
+		if(count == 1){
+			return BaseViewHelper.getSuccessBaseView();
+		}
+		return BaseViewHelper.getFailBaseView("202", "警告：更新了"+count+"条数据");
 	}
 }
