@@ -8,20 +8,16 @@
 </head>
 
 <body>
-<div class="title"><h2>信息登记</h2></div>
+<div class="title"><h2>新增功能</h2></div>
 <div class="main">
-	<form id="addform" action="/role/save" method="get">
+	<form id="addform" action="/func/save" method="get">
     <p class="short-input ue-clear">
     	<label>角色ID：</label>
-        <input name="roleId" type="text" placeholder="角色ID" />
+        <input name="id" type="text" placeholder="功能ID" />
     </p>
     <p class="short-input ue-clear">
     	<label>角色名称：</label>
-        <input name="roleName" type="text" placeholder="角色名称" />
-    </p>
-    <p class="short-input ue-clear">
-    	<label>创建人：</label>
-        <input name="createuser" type="text" placeholder="创建人" />
+        <input name="name" type="text" placeholder="功能名称" />
     </p>
     <p class="short-input ue-clear">
     	<label>SITEID：</label>
@@ -40,20 +36,18 @@
 <script type="text/javascript">
 $('.confirm').on("click" , function(){
 	if(confirm("是否确定保存 ？")){
-		$("#addform").ajaxSubmit(function(data){    
-		console.log(JSON.stringify(data));  
+		$("#addform").ajaxSubmit(function(data){ 
 	        if(data.error){  
 	            alert(data.errorMessage);     
 	        }else{
-	        	window.location.href = "/role/list";
+	        	window.location.href = "/func/list";
 	        }
     	});
 	}
 });
 $('.clear').on("click" , function(){
-	$('input[name=roleId]').val('');
-	$('input[name=roleName]').val('');
-	$('input[name=createuser]').val('');
+	$('input[name=id]').val('');
+	$('input[name=name]').val('');
 	$('input[name=siteId]').val('');
 })
 </script>

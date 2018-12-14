@@ -8,30 +8,26 @@
 </head>
 
 <body>
-<div class="title"><h2>信息登记</h2></div>
+<div class="title"><h2>功能编辑编辑</h2></div>
 <div class="main">
-	<form id="addform" action="/role/save" method="get">
+	<form id="addform" action="/func/update" method="get">
     <p class="short-input ue-clear">
     	<label>角色ID：</label>
-        <input name="roleId" type="text" placeholder="角色ID" />
+        <input name="id" type="text" placeholder="角色ID" value="${model.id}" readonly="readonly"/><span>不可编辑</span>
     </p>
     <p class="short-input ue-clear">
     	<label>角色名称：</label>
-        <input name="roleName" type="text" placeholder="角色名称" />
-    </p>
-    <p class="short-input ue-clear">
-    	<label>创建人：</label>
-        <input name="createuser" type="text" placeholder="创建人" />
+        <input name="name" type="text" placeholder="角色名称" value="${model.name}"/>
     </p>
     <p class="short-input ue-clear">
     	<label>SITEID：</label>
-        <input name="siteId" type="text" placeholder="SITEID" />
+        <input name="siteId" type="text" placeholder="SITEID" value="${model.siteId}"/>
     </p>
    </form>
 </div>
 <div class="btn ue-clear">
 	<a href="javascript:;" class="confirm">确定</a>
-    <a href="javascript:;" class="clear">清空内容</a>
+    <a href="javascript:;" class="clear">重置</a>
 </div>
 </body>
 <script type="text/javascript" src="/login/js/jquery.js"></script>
@@ -39,22 +35,18 @@
 <script type="text/javascript" src="/login/js/common.js"></script>
 <script type="text/javascript">
 $('.confirm').on("click" , function(){
-	if(confirm("是否确定保存 ？")){
-		$("#addform").ajaxSubmit(function(data){    
-		console.log(JSON.stringify(data));  
+	if(confirm("是否确定保存修改 ？")){
+		$("#addform").ajaxSubmit(function(data){
 	        if(data.error){  
-	            alert(data.errorMessage);     
+	            alert(data.message);     
 	        }else{
-	        	window.location.href = "/role/list";
+	        	window.location.href = "/func/list";
 	        }
     	});
 	}
 });
 $('.clear').on("click" , function(){
-	$('input[name=roleId]').val('');
-	$('input[name=roleName]').val('');
-	$('input[name=createuser]').val('');
-	$('input[name=siteId]').val('');
+	window.location.reload();
 })
 </script>
 </html>

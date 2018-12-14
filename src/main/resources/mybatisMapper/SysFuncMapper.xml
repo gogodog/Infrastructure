@@ -67,4 +67,91 @@
       </if>
     </trim>
   </insert>
+  <select id="getListPage" resultType="sysFunc" parameterType="com.zjyx.right.model.controllerbean.SysFuncBean">
+	  select ID as id, NAME as name, FUNC_TYPE as funcType, FUNC_URL as funcUrl, PID as pid, FUNC_SEQ as funcSeq, SITE_ID as siteId from SYS_FUNC where 1=1 
+      <if test="id != null">
+        and ID = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        and NAME like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="funcType != null">
+        and FUNC_TYPE = #{funcType,jdbcType=VARCHAR}
+      </if>
+      <if test="funcUrl != null">
+        and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="pid != null">
+        and PID = #{pid,jdbcType=VARCHAR}
+      </if>
+      <if test="funcSeq != null">
+        and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
+      </if>
+      <if test="siteId != null">
+        and SITE_ID = #{siteId,jdbcType=DECIMAL}
+      </if>
+    <if test="onePageSize>1 and beginNum>-2">
+       	limit #{beginNum},#{onePageSize}
+    </if>
+  </select>
+  <select id="getListCount" resultType="Integer" parameterType="com.zjyx.right.model.controllerbean.SysFuncBean">
+	  select count(*) from SYS_FUNC where 1=1 
+      <if test="id != null">
+        and ID = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        and NAME like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="funcType != null">
+        and FUNC_TYPE = #{funcType,jdbcType=VARCHAR}
+      </if>
+      <if test="funcUrl != null">
+        and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="pid != null">
+        and PID = #{pid,jdbcType=VARCHAR}
+      </if>
+      <if test="funcSeq != null">
+        and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
+      </if>
+      <if test="siteId != null">
+        and SITE_ID = #{siteId,jdbcType=DECIMAL}
+      </if>
+  </select>
+  <delete id="delete" parameterType="com.zjyx.right.model.controllerbean.SysFuncBean">  
+      DELETE FROM SYS_FUNC WHERE 1=1
+      <if test="id != null">
+        and ID = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        and NAME = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="funcType != null">
+        and FUNC_TYPE = #{funcType,jdbcType=VARCHAR}
+      </if>
+      <if test="funcUrl != null">
+        and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="pid != null">
+        and PID = #{pid,jdbcType=VARCHAR}
+      </if>
+      <if test="funcSeq != null">
+        and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
+      </if>
+      <if test="siteId != null">
+        and SITE_ID = #{siteId,jdbcType=DECIMAL}
+      </if>
+  </delete>
+  <update id="update" parameterType="com.zjyx.right.model.controllerbean.SysFuncBean">
+	 UPDATE SYS_FUNC
+	 <trim prefix="set" suffixOverrides=",">
+      <if test="name != null">NAME = #{name,jdbcType=VARCHAR},</if>
+      <if test="funcType != null">FUNC_TYPE = #{funcType,jdbcType=VARCHAR},</if>
+      <if test="funcUrl != null">FUNC_URL = #{funcUrl,jdbcType=VARCHAR},</if>
+      <if test="pid != null">PID = #{pid,jdbcType=VARCHAR},</if>
+      <if test="funcSeq != null">FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL},</if>
+      <if test="siteId != null">SITE_ID = #{siteId,jdbcType=DECIMAL},</if>
+	 </trim>
+	 WHERE ID=#{id,jdbcType=VARCHAR}
+  </update>
 </mapper>
