@@ -11,18 +11,42 @@
 <div class="title"><h2>功能编辑编辑</h2></div>
 <div class="main">
 	<form id="addform" action="/func/update" method="get">
-    <p class="short-input ue-clear">
-    	<label>角色ID：</label>
-        <input name="id" type="text" placeholder="角色ID" value="${model.id}" readonly="readonly"/><span>不可编辑</span>
-    </p>
-    <p class="short-input ue-clear">
-    	<label>角色名称：</label>
-        <input name="name" type="text" placeholder="角色名称" value="${model.name}"/>
-    </p>
-    <p class="short-input ue-clear">
-    	<label>SITEID：</label>
-        <input name="siteId" type="text" placeholder="SITEID" value="${model.siteId}"/>
-    </p>
+	    <p class="short-input ue-clear">
+	    	<label>功能ID：</label>
+	        <input name="id" type="text" placeholder="功能ID" value="${model.id}"/>
+	    </p>
+	    <p class="short-input ue-clear">
+	    	<label>功能名称：</label>
+	        <input name="name" type="text" placeholder="功能名称" value="${model.name}"/>
+	    </p>
+	    <p class="short-input ue-clear">
+	    	<label>URL：</label>
+	        <input name="funcUrl" type="text" placeholder="URL" value="${model.funcUrl}"/>
+	    </p>
+	    <p class="short-input ue-clear">
+	    	<label>父级：</label>
+	        <input name="pid" type="text" placeholder="父级ID" value="${model.pid}"/>
+	    </p>
+	    <p class="short-input ue-clear">
+	    	<label>FUNCSEQ：</label>
+	        <input name="funcSeq" type="text" placeholder="FUNCSEQ" value="${model.funcSeq}"/>
+	    </p>
+	    <p class="short-input ue-clear">
+	    	<label>SITEID：</label>
+	        <input name="siteId" type="text" placeholder="SITEID" value="${model.siteId}"/>
+	    </p>
+	    <div class="short-input select ue-clear">
+	    	<label>类型：</label>
+	        <div class="select-wrap">
+	        	<div class="select-title ue-clear"><span>${model.funcType}</span><i class="icon"></i></div>
+	            <ul class="select-list">
+	            	<li>一级菜单</li>
+	                <li>二级菜单</li>
+	                <li>功能</li>
+	            </ul>
+	        </div>
+	    </div>
+	    <input name="funcType" type="text" style="display:none" value="${model.funcType}"/>
    </form>
 </div>
 <div class="btn ue-clear">
@@ -47,6 +71,16 @@ $('.confirm').on("click" , function(){
 });
 $('.clear').on("click" , function(){
 	window.location.reload();
+});
+$(".select-title").on("click",function(){
+	$(".select-list").hide();
+	$(this).siblings($(".select-list")).show();
+	return false;
+});
+$(".select-list").on("click","li",function(){
+	var txt = $(this).text();
+	$('input[name=funcType]').val(txt);
+	$(this).parent($(".select-list")).siblings($(".select-title")).find("span").text(txt);
 })
 </script>
 </html>
