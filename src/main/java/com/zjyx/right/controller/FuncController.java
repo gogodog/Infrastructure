@@ -1,11 +1,15 @@
 package com.zjyx.right.controller;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mysql.jdbc.StringUtils;
 import com.zjyx.right.helper.BaseViewHelper;
 import com.zjyx.right.model.PageInfoDto;
@@ -28,6 +32,21 @@ public class FuncController {
 			ModelAndView mv = new ModelAndView("views/func-list");
 			mv.addObject("bean", bean);
 			mv.addObject("list", roles);
+			return mv;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return BaseViewHelper.get500ModelAndView();
+		}
+	}
+	
+	@RequestMapping("/ztreelist")
+	public ModelAndView ztreelist(SysFuncBean bean){
+		try{
+			bean.setOnePageSize(1000);
+			PageInfoDto<SysFunc> roles = funcservice.getList(bean);
+			ModelAndView mv = new ModelAndView("views/ztree");
+			mv.addObject("bean", bean);
+			mv.addObject("zNodes", JSONObject.toJSONString(roles.getObjects()));
 			return mv;
 		}catch(Exception e){
 			System.out.println(e.getMessage());

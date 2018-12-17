@@ -25,7 +25,7 @@
 	    </p>
 	    <p class="short-input ue-clear">
 	    	<label>父级：</label>
-	        <input name="pid" type="text" placeholder="父级ID" value="${model.pid}"/>
+	        <input name="pid" type="text" placeholder="父级ID" value="${model.pId}"/>
 	    </p>
 	    <p class="short-input ue-clear">
 	    	<label>FUNCSEQ：</label>

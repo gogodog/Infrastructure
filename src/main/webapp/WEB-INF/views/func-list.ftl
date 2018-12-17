@@ -53,7 +53,7 @@
                 <td class="name">${item.funcType}</td>
                 <td class="name">${item.funcUrl}</td>
                 <td class="name">${item.funcSeq}</td>
-                <td class="name">${item.pid}</td>
+                <td class="name">${item.pId}</td>
                 <td class="name">${item.siteId}</td>
                 <td class="operate"><a href="javascript:;">查看</a></td>
             </tr>

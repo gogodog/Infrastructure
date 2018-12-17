@@ -51,6 +51,7 @@
                     		<li><a href="javascript:;" date-src="/func/list">功能管理</a></li>
                         	<li><a href="javascript:;" date-src="/role/list">角色管理</a></li>
                             <li><a href="javascript:;" date-src="/user/list">用户管理</a></li>
+                            <li><a href="javascript:;" date-src="/func/ztreelist">权限树<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">用户日志<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">修改密码<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">权限申请<2期></a></li>

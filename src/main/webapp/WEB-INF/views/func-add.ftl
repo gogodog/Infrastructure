@@ -25,7 +25,7 @@
     </p>
     <p class="short-input ue-clear">
     	<label>父级：</label>
-        <input name="pid" type="text" placeholder="父级ID" />
+        <input name="pId" type="text" placeholder="父级ID" />
     </p>
     <p class="short-input ue-clear">
     	<label>FUNCSEQ：</label>
@@ -73,7 +73,7 @@ $('.clear').on("click" , function(){
 	$('input[name=id]').val('');
 	$('input[name=name]').val('');
 	$('input[name=siteId]').val('');
-	$('input[name=pid]').val('');
+	$('input[name=pId]').val('');
 	$('input[name=funcSeq]').val('');
 	$('input[name=siteId]').val('');
 })

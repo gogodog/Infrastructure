@@ -10,7 +10,7 @@ public class SysFuncBean extends ListBaseBean{
 
     private String funcUrl;
 
-    private String pid;
+    private String pId;
 
     private Long funcSeq;
 
@@ -48,12 +48,12 @@ public class SysFuncBean extends ListBaseBean{
 		this.funcUrl = funcUrl;
 	}
 
-	public String getPid() {
-		return pid;
+	public String getPId() {
+		return pId;
 	}
 
-	public void setPid(String pid) {
-		this.pid = pid;
+	public void setPId(String pId) {
+		this.pId = pId;
 	}
 
 	public Long getFuncSeq() {

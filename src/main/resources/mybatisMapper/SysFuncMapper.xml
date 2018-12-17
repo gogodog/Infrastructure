@@ -6,7 +6,7 @@
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="FUNC_TYPE" jdbcType="VARCHAR" property="funcType" />
     <result column="FUNC_URL" jdbcType="VARCHAR" property="funcUrl" />
-    <result column="PID" jdbcType="VARCHAR" property="pid" />
+    <result column="PID" jdbcType="VARCHAR" property="pId" />
     <result column="FUNC_SEQ" jdbcType="DECIMAL" property="funcSeq" />
     <result column="SITE_ID" jdbcType="DECIMAL" property="siteId" />
   </resultMap>
@@ -15,7 +15,7 @@
       FUNC_URL, PID, FUNC_SEQ, 
       SITE_ID)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{funcType,jdbcType=VARCHAR}, 
-      #{funcUrl,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{funcSeq,jdbcType=DECIMAL}, 
+      #{funcUrl,jdbcType=VARCHAR}, #{pId,jdbcType=VARCHAR}, #{funcSeq,jdbcType=DECIMAL}, 
       #{siteId,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.zjyx.right.model.persistence.SysFunc">
@@ -33,7 +33,7 @@
       <if test="funcUrl != null">
         FUNC_URL,
       </if>
-      <if test="pid != null">
+      <if test="pId != null">
         PID,
       </if>
       <if test="funcSeq != null">
@@ -56,8 +56,8 @@
       <if test="funcUrl != null">
         #{funcUrl,jdbcType=VARCHAR},
       </if>
-      <if test="pid != null">
-        #{pid,jdbcType=VARCHAR},
+      <if test="pId != null">
+        #{pId,jdbcType=VARCHAR},
       </if>
       <if test="funcSeq != null">
         #{funcSeq,jdbcType=DECIMAL},
@@ -68,7 +68,7 @@
     </trim>
   </insert>
   <select id="getListPage" resultType="sysFunc" parameterType="com.zjyx.right.model.controllerbean.SysFuncBean">
-	  select ID as id, NAME as name, FUNC_TYPE as funcType, FUNC_URL as funcUrl, PID as pid, FUNC_SEQ as funcSeq, SITE_ID as siteId from SYS_FUNC where 1=1 
+	  select ID as id, NAME as name, FUNC_TYPE as funcType, FUNC_URL as funcUrl, PID as pId, FUNC_SEQ as funcSeq, SITE_ID as siteId from SYS_FUNC where 1=1 
       <if test="id != null">
         and ID = #{id,jdbcType=VARCHAR}
       </if>
@@ -81,8 +81,8 @@
       <if test="funcUrl != null">
         and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
       </if>
-      <if test="pid != null">
-        and PID = #{pid,jdbcType=VARCHAR}
+      <if test="pId != null">
+        and PID = #{pId,jdbcType=VARCHAR}
       </if>
       <if test="funcSeq != null">
         and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
@@ -108,8 +108,8 @@
       <if test="funcUrl != null">
         and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
       </if>
-      <if test="pid != null">
-        and PID = #{pid,jdbcType=VARCHAR}
+      <if test="pId != null">
+        and PID = #{pId,jdbcType=VARCHAR}
       </if>
       <if test="funcSeq != null">
         and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
@@ -132,8 +132,8 @@
       <if test="funcUrl != null">
         and FUNC_URL = #{funcUrl,jdbcType=VARCHAR}
       </if>
-      <if test="pid != null">
-        and PID = #{pid,jdbcType=VARCHAR}
+      <if test="pId != null">
+        and PID = #{pId,jdbcType=VARCHAR}
       </if>
       <if test="funcSeq != null">
         and FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL}
@@ -148,7 +148,7 @@
       <if test="name != null">NAME = #{name,jdbcType=VARCHAR},</if>
       <if test="funcType != null">FUNC_TYPE = #{funcType,jdbcType=VARCHAR},</if>
       <if test="funcUrl != null">FUNC_URL = #{funcUrl,jdbcType=VARCHAR},</if>
-      <if test="pid != null">PID = #{pid,jdbcType=VARCHAR},</if>
+      <if test="pId != null">PID = #{pId,jdbcType=VARCHAR},</if>
       <if test="funcSeq != null">FUNC_SEQ = #{funcSeq,jdbcType=DECIMAL},</if>
       <if test="siteId != null">SITE_ID = #{siteId,jdbcType=DECIMAL},</if>
 	 </trim>
