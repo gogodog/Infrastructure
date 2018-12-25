@@ -19,7 +19,7 @@ public class EsBaseTest {
 	 RoleService role;
 	 
 	 @Test
-	 public void testSave(){
+	 public void testSave() throws Exception{
 		 SysRoleBean bean = new SysRoleBean();
 		 bean.setOnePageSize(10);
 		 bean.setRoleName("21");

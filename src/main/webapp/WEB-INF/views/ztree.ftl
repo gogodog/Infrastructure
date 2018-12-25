@@ -31,11 +31,25 @@
 <div class="zTreeDemoBackground left">
 		<ul id="right" class="ztree"></ul>
 </div>
-
 <div class="pagination ue-clear"></div>
+<form class="myForm" id="propertyForm" style="width: 190px;height: 100px;position: fixed; display:none;background: aliceblue;">
+    </div>
+    <div class="form_content">
+        <table>
+            <tr>
+                <td class="th">名称：</td>
+                <td><input type="text" style="width:120px" id="ele_schedule"/></td>
+            </tr>
+            <tr>
+                <td class="th">地址：</td>
+                <td><input type="text" style="width:120px" id="ele_schedule"/></td>
+            </tr>
+        </table>
+    </div>
+    <div class="form_btn_div">
+        <input type="reset" value="重置"/>
+        <input type="button" value="确定" onclick="alert(demo.$focus)"/>
+    </div>
+</form>
 </body>
-
-<script type="text/javascript">
-
-</script>
 </html>

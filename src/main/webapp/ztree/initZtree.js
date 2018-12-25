@@ -60,6 +60,14 @@ function beforeEditName(treeId, treeNode) {
 			}, 0);
 		}
 	}, 0);
+	var div = $("#propertyForm");
+    if (div.is(":hidden")) {
+        div.show();
+        div.css("left", document.body.scrollLeft + event.clientX + 1);
+        div.css("top", document.body.scrollLeft + event.clientY + 10);
+    } else {
+        div.hide();
+    }
 	return false;
 }
 function beforeRemove(treeId, treeNode) {
