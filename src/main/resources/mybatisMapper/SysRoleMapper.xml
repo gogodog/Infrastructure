@@ -77,4 +77,5 @@
          and SITE_ID = #{siteId,jdbcType=DECIMAL}
       </if>
   </select>
+  
 </mapper>

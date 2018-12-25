@@ -1,6 +1,7 @@
 package com.zjyx.right.model.persistence;
 
 public class SysFunc {
+	
     private String id;
 
     private String name;
@@ -14,6 +15,8 @@ public class SysFunc {
     private Long funcSeq;
 
     private Short siteId;
+    
+    private String funCode;
 
     public String getId() {
         return id;
@@ -70,4 +73,14 @@ public class SysFunc {
     public void setSiteId(Short siteId) {
         this.siteId = siteId;
     }
+
+	public String getFunCode() {
+		return funCode;
+	}
+
+	public void setFunCode(String funCode) {
+		this.funCode = funCode;
+	}
+    
+    
 }

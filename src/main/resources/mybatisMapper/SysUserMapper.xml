@@ -51,4 +51,8 @@
       </if>
     </trim>
   </insert>
+  
+  <select id="selectByUserName" resultType="sysUser">
+     select USER_ID,USER_NAME,PASSWORD,NICK_NAME,EMAIL from SYS_USER where USER_NAME = #{userName}
+  </select>
 </mapper>

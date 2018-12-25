@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mysql.jdbc.StringUtils;
 import com.zjyx.right.helper.BaseViewHelper;
@@ -38,6 +39,12 @@ public class LoginController {
 			return BaseViewHelper.getBaseView(true, "20002", "无效用户");
 		}
 		return BaseViewHelper.getSuccessBaseView();
+	}
+	
+	@RequestMapping("/adminlogin")
+	public ModelAndView adminlogin(){
+		ModelAndView mv = new ModelAndView("views/login");
+		return mv;
 	}
 	
 }

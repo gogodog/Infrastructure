@@ -37,4 +37,18 @@
       </if>
     </trim>
   </insert>
+  
+  <select id="selectFuncCode" resultType="String">
+      select FUNC_CODE from SYS_FUNC where ID in 
+      (
+       select FUNC_ID from SYS_FUNC_ROLE_R  
+       <if test="list!=null and list.size()>0">
+            where ROLE_ID in
+            <foreach collection="types" index="index" item="item" open="(" separator="," close=")">  
+               #{item}  
+            </foreach>
+       </if>
+      )
+  </select>
+  
 </mapper>

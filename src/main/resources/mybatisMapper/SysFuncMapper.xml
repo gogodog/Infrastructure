@@ -9,14 +9,15 @@
     <result column="PID" jdbcType="VARCHAR" property="pid" />
     <result column="FUNC_SEQ" jdbcType="DECIMAL" property="funcSeq" />
     <result column="SITE_ID" jdbcType="DECIMAL" property="siteId" />
+    <result column="FUNC_CODE" jdbcType="DECIMAL" property="funCode" />
   </resultMap>
   <insert id="insert" parameterType="com.zjyx.right.model.persistence.SysFunc">
     insert into SYS_FUNC (ID, NAME, FUNC_TYPE, 
-      FUNC_URL, PID, FUNC_SEQ, 
+      FUNC_URL, PID, FUNC_SEQ, FUNC_CODE
       SITE_ID)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{funcType,jdbcType=VARCHAR}, 
       #{funcUrl,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{funcSeq,jdbcType=DECIMAL}, 
-      #{siteId,jdbcType=DECIMAL})
+      #{siteId,jdbcType=DECIMAL},#{funCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zjyx.right.model.persistence.SysFunc">
     insert into SYS_FUNC
@@ -42,6 +43,9 @@
       <if test="siteId != null">
         SITE_ID,
       </if>
+      <if test="funCode != null">
+        FUNC_CODE
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,6 +68,9 @@
       </if>
       <if test="siteId != null">
         #{siteId,jdbcType=DECIMAL},
+      </if>
+      <if test="siteId != null">
+        #{funCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

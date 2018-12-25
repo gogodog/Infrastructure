@@ -37,4 +37,11 @@
       </if>
     </trim>
   </insert>
+  
+  <select id="getByRoleId" resultType="sysRole">
+     select * from SYS_ROLE where ROLE_ID in
+      (
+         select role_id from SYS_USER_ROLE_R where USER_ID = #{userId}
+      )
+  </select>
 </mapper>
