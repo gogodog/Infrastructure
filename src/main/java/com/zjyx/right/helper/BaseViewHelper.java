@@ -1,5 +1,7 @@
 package com.zjyx.right.helper;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.zjyx.right.model.controllerview.BaseView;
 
 public class BaseViewHelper {
@@ -11,9 +13,9 @@ public class BaseViewHelper {
 		view.setObjects(object);
 		return view;
 	}
-	public static BaseView getBaseView(boolean isError, String code, String msg){
+	public static BaseView getFailBaseView(String code, String msg){
 		BaseView view = new BaseView();
-		view.setError(isError);
+		view.setError(true);
 		view.setErrorCode(code);
 		view.setErrorMessage(msg);
 		return view;
@@ -21,5 +23,9 @@ public class BaseViewHelper {
 	public static BaseView getSuccessBaseView(){
 		BaseView view = new BaseView();
 		return view;
+	} 
+	public static ModelAndView get500ModelAndView(){
+		ModelAndView mv = new ModelAndView("views/500");
+		return mv;
 	} 
 }

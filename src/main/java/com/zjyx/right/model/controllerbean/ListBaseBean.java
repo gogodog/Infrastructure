@@ -2,7 +2,7 @@ package com.zjyx.right.model.controllerbean;
 
 public class ListBaseBean {
 
-	private int currentPage;
+	private int currentPage = 1;
 
 	private int onePageSize;
 
@@ -39,6 +39,9 @@ public class ListBaseBean {
 
 	// 数据库第一条数据
 	public int getBeginNum() {
+		if(currentPage == 0){
+			currentPage = 1;
+		}
 		return (currentPage - 1) * onePageSize;
 	}
 }

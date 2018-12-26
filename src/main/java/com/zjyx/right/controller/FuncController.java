@@ -1,44 +1,64 @@
 package com.zjyx.right.controller;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mysql.jdbc.StringUtils;
 import com.zjyx.right.helper.BaseViewHelper;
 import com.zjyx.right.model.PageInfoDto;
-import com.zjyx.right.model.controllerbean.SysRoleBean;
+import com.zjyx.right.model.controllerbean.SysFuncBean;
 import com.zjyx.right.model.controllerview.BaseView;
-import com.zjyx.right.model.persistence.SysRole;
-import com.zjyx.right.service.RoleService;
+import com.zjyx.right.model.persistence.SysFunc;
+import com.zjyx.right.service.FuncService;
 
 @Controller
-@RequestMapping("/role")
-public class RoleController {
+@RequestMapping("/func")
+public class FuncController {
 
 	@Autowired
-	RoleService roleservice;
+	FuncService funcservice;
 	
 	@RequestMapping("/list")
-	public ModelAndView list(SysRoleBean bean){
+	public ModelAndView list(SysFuncBean bean){
 		try{
-			PageInfoDto<SysRole> roles = roleservice.getList(bean);
-			ModelAndView mv = new ModelAndView("views/role-list");
+			PageInfoDto<SysFunc> roles = funcservice.getList(bean);
+			ModelAndView mv = new ModelAndView("views/func-list");
 			mv.addObject("bean", bean);
 			mv.addObject("list", roles);
 			return mv;
 		}catch(Exception e){
+			System.out.println(e.getMessage());
+			return BaseViewHelper.get500ModelAndView();
+		}
+	}
+	
+	@RequestMapping("/ztreelist")
+	public ModelAndView ztreelist(SysFuncBean bean){
+		try{
+			bean.setOnePageSize(1000);
+			PageInfoDto<SysFunc> roles = funcservice.getList(bean);
+			ModelAndView mv = new ModelAndView("views/ztree");
+			mv.addObject("bean", bean);
+			mv.addObject("zNodes", JSONObject.toJSONString(roles.getObjects()));
+			return mv;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 			return BaseViewHelper.get500ModelAndView();
 		}
 	}
 	
 	@RequestMapping("/save")
 	@ResponseBody
-	public BaseView save(SysRole bean){
+	public BaseView save(SysFunc bean){
 		try {
-			return roleservice.save(bean);
+			return funcservice.save(bean);
 		} catch (Exception e) {
 			return BaseViewHelper.getFailBaseView("2001",e.getMessage());
 		}
@@ -46,12 +66,12 @@ public class RoleController {
 	
 	@RequestMapping("/del")
 	@ResponseBody
-	public BaseView del(SysRole bean){
+	public BaseView del(SysFunc bean){
 		try {
-			if(StringUtils.isEmptyOrWhitespaceOnly(bean.getRoleId())){
+			if(StringUtils.isEmptyOrWhitespaceOnly(bean.getId())){
 				return BaseViewHelper.getFailBaseView("2002","请选择删除行");
 			}
-			return roleservice.del(bean);
+			return funcservice.del(bean);
 		} catch (Exception e) {
 			return BaseViewHelper.getFailBaseView("2001",e.getMessage());
 		}
@@ -59,26 +79,26 @@ public class RoleController {
 	
 	@RequestMapping("/update")
 	@ResponseBody
-	public BaseView update(SysRole bean){
+	public BaseView update(SysFunc bean){
 		try{
-			if(StringUtils.isEmptyOrWhitespaceOnly(bean.getRoleId())){
+			if(StringUtils.isEmptyOrWhitespaceOnly(bean.getId())){
 				return BaseViewHelper.getFailBaseView("2002", "角色ID不能为空");
 			}
-			return roleservice.update(bean);
+			return funcservice.update(bean);
 		}catch (Exception e) {
 			return BaseViewHelper.getFailBaseView("2001",e.getMessage());
 		}
 	}
 	
 	@RequestMapping("/edit")
-	public ModelAndView detail(String roleId){
+	public ModelAndView detail(String id){
 		try{
-			ModelAndView model = new ModelAndView("views/role-edit");
-			if(StringUtils.isEmptyOrWhitespaceOnly(roleId)){
+			ModelAndView model = new ModelAndView("views/func-edit");
+			if(StringUtils.isEmptyOrWhitespaceOnly(id)){
 				model.addObject("model", BaseViewHelper.getFailBaseView("201", "参数不能为空"));
 				return model;
 			}
-			SysRole role = roleservice.findByRoleId(roleId);
+			SysFunc role = funcservice.findById(id);
 			if(role == null){
 				model.addObject("model", BaseViewHelper.getFailBaseView("202", "无此记录"));
 			}

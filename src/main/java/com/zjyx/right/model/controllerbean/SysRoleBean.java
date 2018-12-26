@@ -1,5 +1,7 @@
 package com.zjyx.right.model.controllerbean;
 
+import com.mysql.jdbc.StringUtils;
+
 public class SysRoleBean extends ListBaseBean{
     private String roleId;
 
@@ -22,7 +24,7 @@ public class SysRoleBean extends ListBaseBean{
     }
 
     public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
+        this.roleName = roleName == null || StringUtils.isEmptyOrWhitespaceOnly(roleName) ? null : roleName.trim();
     }
 
     public String getCreateuser() {

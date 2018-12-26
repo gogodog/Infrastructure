@@ -10,7 +10,7 @@ public class SysFunc {
 
     private String funcUrl;
 
-    private String pid;
+    private String pId;
 
     private Long funcSeq;
 
@@ -50,14 +50,6 @@ public class SysFunc {
         this.funcUrl = funcUrl == null ? null : funcUrl.trim();
     }
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
-
     public Long getFuncSeq() {
         return funcSeq;
     }
@@ -83,4 +75,19 @@ public class SysFunc {
 	}
     
     
+	public String getpId() {
+		return pId;
+	}
+
+	public void setpId(String pId) {
+		this.pId = pId;
+	}
+	
+	public String getPId() {
+		return pId;
+	}
+
+	public void setPId(String pId) {
+		this.pId = pId;
+	}
 }

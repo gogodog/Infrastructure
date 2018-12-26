@@ -51,8 +51,74 @@
       </if>
     </trim>
   </insert>
-  
   <select id="selectByUserName" resultType="sysUser">
      select USER_ID,USER_NAME,PASSWORD,NICK_NAME,EMAIL from SYS_USER where USER_NAME = #{userName}
   </select>
+  <select id="getListPage" resultType="sysUser" parameterType="com.zjyx.right.model.controllerbean.SysUserBean">
+	  select USER_ID as userId, USER_NAME as userName, PASSWORD as password, NICK_NAME as nickName, EMAIL as email from SYS_USER where 1=1 
+      <if test="userId != null">
+        and USER_ID = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+        and USER_NAME like CONCAT('%',#{userName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="password != null">
+        and PASSWORD = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        and NICK_NAME = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        and EMAIL = #{email,jdbcType=VARCHAR}
+      </if>
+    <if test="onePageSize>1 and beginNum>-2">
+       	limit #{beginNum},#{onePageSize}
+    </if>
+  </select>
+  <select id="getListCount" resultType="Integer" parameterType="com.zjyx.right.model.controllerbean.SysUserBean">
+	  select count(*) from SYS_USER where 1=1 
+      <if test="userId != null">
+        and USER_ID = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+        and USER_NAME like CONCAT('%',#{userName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="password != null">
+        and PASSWORD = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        and NICK_NAME = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        and EMAIL = #{email,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <delete id="delete" parameterType="com.zjyx.right.model.controllerbean.SysUserBean">  
+      DELETE FROM SYS_USER WHERE 1=1
+      <if test="userId != null">
+        and USER_ID = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+        and USER_NAME = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        and PASSWORD = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="nickName != null">
+        and NICK_NAME = #{nickName,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        and EMAIL = #{email,jdbcType=VARCHAR}
+      </if>
+  </delete>
+  <update id="update" parameterType="com.zjyx.right.model.controllerbean.SysUserBean">
+	 UPDATE SYS_USER
+	 <trim prefix="set" suffixOverrides=",">
+      <if test="userName != null">USER_NAME = #{userName,jdbcType=VARCHAR},</if>
+      <if test="password != null">PASSWORD = #{password,jdbcType=VARCHAR},</if>
+      <if test="nickName != null">NICK_NAME = #{nickName,jdbcType=VARCHAR},</if>
+      <if test="email != null">EMAIL = #{email,jdbcType=VARCHAR},</if>
+	 </trim>
+	 WHERE USER_ID=#{userId,jdbcType=VARCHAR}
+  </update>
 </mapper>

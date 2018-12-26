@@ -50,7 +50,7 @@
          and ROLE_ID = #{roleId,jdbcType=VARCHAR}
       </if>
       <if test="roleName != null">
-         and ROLE_NAME like #{roleName,jdbcType=VARCHAR}
+         and ROLE_NAME like CONCAT('%',#{roleName,jdbcType=VARCHAR},'%')
       </if>
       <if test="createuser != null">
          and CREATEUSER = #{createuser,jdbcType=VARCHAR}
@@ -68,7 +68,7 @@
          and ROLE_ID = #{roleId,jdbcType=VARCHAR}
       </if>
       <if test="roleName != null">
-         and ROLE_NAME like #{roleName,jdbcType=VARCHAR}
+         and ROLE_NAME like CONCAT('%',#{roleName,jdbcType=VARCHAR},'%')
       </if>
       <if test="createuser != null">
          and CREATEUSER = #{createuser,jdbcType=VARCHAR}
@@ -77,5 +77,28 @@
          and SITE_ID = #{siteId,jdbcType=DECIMAL}
       </if>
   </select>
-  
+  <delete id="delete" parameterType="com.zjyx.right.model.controllerbean.SysRoleBean">  
+      DELETE FROM SYS_ROLE WHERE 1=1
+      <if test="roleId != null">
+         and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+      </if>
+      <if test="roleName != null">
+         and ROLE_NAME = #{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="createuser != null">
+         and CREATEUSER = #{createuser,jdbcType=VARCHAR}
+      </if>
+      <if test="siteId != null">
+         and SITE_ID = #{siteId,jdbcType=DECIMAL}
+      </if>  
+  </delete>
+  <update id="update" parameterType="com.zjyx.right.model.controllerbean.SysRoleBean">
+	 UPDATE SYS_ROLE
+	 <trim prefix="set" suffixOverrides=",">
+	  <if test="roleName != null">ROLE_NAME=#{roleName,jdbcType=VARCHAR},</if>
+	  <if test="createuser != null">CREATEUSER=#{createuser,jdbcType=VARCHAR},</if>
+	  <if test="siteId != null">SITE_ID=#{siteId,jdbcType=DECIMAL},</if>
+	 </trim>
+	 WHERE ROLE_ID=#{roleId,jdbcType=VARCHAR}
+  </update>
 </mapper>

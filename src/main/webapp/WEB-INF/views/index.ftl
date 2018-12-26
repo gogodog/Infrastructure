@@ -49,9 +49,10 @@
                     <li class="system">
                     	<div class="nav-header"><a href="javascript:;" class="ue-clear"><span>系统管理</span><i class="icon"></i></a></div>
                     	<ul class="subnav">
-                        	<li><a href="javascript:;" date-src="info-reg.html">角色管理</a></li>
-                            <li><a href="javascript:;" date-src="info-mgt.html">权限管理</a></li>
-                            <li><a href="javascript:;" date-src="info-det.html">用户管理</a></li>
+                    		<li><a href="javascript:;" date-src="/func/list">功能管理</a></li>
+                        	<li><a href="javascript:;" date-src="/role/list">角色管理</a></li>
+                            <li><a href="javascript:;" date-src="/user/list">用户管理</a></li>
+                            <li><a href="javascript:;" date-src="/func/ztreelist">权限树<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">用户日志<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">修改密码<2期></a></li>
                             <li><a href="javascript:;" date-src="info-det.html">权限申请<2期></a></li>

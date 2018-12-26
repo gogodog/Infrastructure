@@ -7,34 +7,34 @@ import org.springframework.stereotype.Service;
 
 import com.mysql.jdbc.StringUtils;
 import com.zjyx.right.helper.BaseViewHelper;
-import com.zjyx.right.mapper.SysRoleMapper;
+import com.zjyx.right.mapper.SysFuncMapper;
 import com.zjyx.right.model.PageInfoDto;
-import com.zjyx.right.model.controllerbean.SysRoleBean;
+import com.zjyx.right.model.controllerbean.SysFuncBean;
 import com.zjyx.right.model.controllerview.BaseView;
-import com.zjyx.right.model.persistence.SysRole;
-import com.zjyx.right.service.RoleService;
+import com.zjyx.right.model.persistence.SysFunc;
+import com.zjyx.right.service.FuncService;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class FuncServiceImpl implements FuncService{
 	
 	@Autowired
-	SysRoleMapper rolemapper;
+	SysFuncMapper funcmapper;
 
 	@Override
-	public PageInfoDto<SysRole> getList(SysRoleBean condition) throws Exception{
-		int count = rolemapper.getListCount(condition);
+	public PageInfoDto<SysFunc> getList(SysFuncBean condition) throws Exception{
+		int count = funcmapper.getListCount(condition);
 		condition.setTotalResults(count);
-		List<SysRole> list = rolemapper.getListPage(condition);
+		List<SysFunc> list = funcmapper.getListPage(condition);
 		return PageInfoDto.getPageInfo(condition.getCurrentPage(), condition.getOnePageSize(), count, list);
 		
 	}
 
 	@Override
-	public BaseView save(SysRole bean) throws Exception {
-		if(StringUtils.isEmptyOrWhitespaceOnly(bean.getRoleName())){
+	public BaseView save(SysFunc bean) throws Exception {
+		if(StringUtils.isEmptyOrWhitespaceOnly(bean.getName())){
 			return BaseViewHelper.getFailBaseView("201", "角色名称不能为空");
 		}
-		int count = rolemapper.insert(bean);
+		int count = funcmapper.insert(bean);
 		if(count == 1){
 			return BaseViewHelper.getSuccessBaseView();
 		}
@@ -42,12 +42,12 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public SysRole findByRoleId(String roleId) throws Exception {
-		SysRoleBean condition = new SysRoleBean();
+	public SysFunc findById(String id) throws Exception {
+		SysFuncBean condition = new SysFuncBean();
 		condition.setOnePageSize(2);
-		condition.setRoleId(roleId);
+		condition.setId(id);
 		condition.setCurrentPage(0);
-		List<SysRole> list = rolemapper.getListPage(condition);
+		List<SysFunc> list = funcmapper.getListPage(condition);
 		if(list == null || list.size() != 1){
 			return null;
 		}
@@ -55,8 +55,8 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public BaseView del(SysRole bean) throws Exception {
-		int count = rolemapper.delete(bean);
+	public BaseView del(SysFunc bean) throws Exception {
+		int count = funcmapper.delete(bean);
 		if(count == 1){
 			return BaseViewHelper.getSuccessBaseView();
 		}
@@ -64,8 +64,8 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public BaseView update(SysRole bean) throws Exception {
-		int count = rolemapper.update(bean);
+	public BaseView update(SysFunc bean) throws Exception {
+		int count = funcmapper.update(bean);
 		if(count == 1){
 			return BaseViewHelper.getSuccessBaseView();
 		}
